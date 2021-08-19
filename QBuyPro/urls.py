@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
 
+from QBuyPro import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL,
+           document_root=settings.MEDIA_ROOT)  # 在后台管理中想要看到媒体文件如图片，此处必须要配置的
