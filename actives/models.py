@@ -40,6 +40,10 @@ class ActiveGoodsModel(models.Model):
     def __str__(self):
         return self.active.title + ":" + self.goods.name
 
+    @property
+    def rate_price(self):
+        return float(self.goods.price)*self.rate
+
     class Meta:
         db_table = 'app_active_goods'
         verbose_name_plural = verbose_name = '活动详情'
