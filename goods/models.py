@@ -19,4 +19,3 @@ class GoodsModel(models.Model):
     class Meta:
         db_table = 'app_goods'
         verbose_name_plural = verbose_name = '商品信息'
-        

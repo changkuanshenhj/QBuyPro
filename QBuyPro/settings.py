@@ -177,4 +177,4 @@ LOGGING = {
 }
 
 # 配置Celery
-CELERY_IMPORTS = ('', )
+CELERY_IMPORTS = ('actives.tasks', )
