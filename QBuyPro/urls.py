@@ -21,5 +21,6 @@ from QBuyPro import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('active/', include('actives.urls', namespace='active')),
+    path('user/', include('user.urls', namespace='user')),
 ] + static(settings.MEDIA_URL,
            document_root=settings.MEDIA_ROOT)  # 在后台管理中想要看到媒体文件如图片，此处必须要配置的

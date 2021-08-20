@@ -16,3 +16,5 @@ def qbuy_task(user_id, goods_id):
             return ' %s 抢购 %s 失败:已抢过，限制一次' % (user_id, goods_id)
 
     return ' %s 抢购 %s 失败' % (user_id, goods_id)
+
+# celery -A QBuyPro worker -P eventlet -l info

@@ -58,6 +58,7 @@ def query_qbuy_api(request, goods_id):
         qbuy_goods_id = libs_cache.get_qbuy(user_id)
 
         if goods_id == qbuy_goods_id:
+            # 此处逻辑存在问题
             return JsonResponse({
                 'code': 200,
                 'msg': '抢购成功'
@@ -65,7 +66,7 @@ def query_qbuy_api(request, goods_id):
         else:
             return JsonResponse({
                 'code': 202,
-                'msg': '每天只限一次抢购'
+                'msg': '每天只限一能抢购一件商品'
             })
     elif libs_cache.is_buyable():
         return JsonResponse({
