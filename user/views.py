@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.views import View
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
@@ -10,6 +11,7 @@ from rest_framework.views import APIView
 from .models import UserModel
 
 from rest_framework.decorators import api_view
+from rest_framework.permissions import IsAuthenticated
 
 from api.user import UserModelSerializer
 
@@ -79,6 +81,9 @@ def user_api_detail(request, pk):
 
 
 class UserAPIView(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
     def get(self, request):
         datas = UserModel.objects.all()
         serializer = UserModelSerializer(datas, many=True)

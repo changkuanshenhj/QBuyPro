@@ -14,12 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.shortcuts import render
 from django.urls import path, include
 from django.conf.urls.static import static
 
 from api import api_router
 
 from QBuyPro import settings
+
+
+def to_index(request):
+    return render(request, 'index.html')
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -28,5 +35,7 @@ urlpatterns = [
 
     path('active/', include('actives.urls', namespace='active')),
     path('user/', include('user.urls', namespace='user')),
+
+    path('', to_index)
 ] + static(settings.MEDIA_URL,
            document_root=settings.MEDIA_ROOT)  # 在后台管理中想要看到媒体文件如图片，此处必须要配置的
